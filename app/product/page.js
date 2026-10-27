@@ -1,15 +1,16 @@
 "use client";
 import { Loader, EmptyBox, BuyButton } from "@/components/States";
 
-function List({ id, title, items, ordered }) {
-  const Tag = ordered ? "ol" : "ul";
+function Section({ id, title, children }) {
   return (
     <section aria-labelledby={id}>
       <h2 id={id}>{title}</h2>
-      {items?.length ? <Tag className="list">{items.map((t) => <li key={t}>{t}</li>)}</Tag> : <p>준비 중입니다.</p>}
+      {children}
     </section>
   );
 }
+
+const Empty = () => <p>준비 중입니다.</p>;
 
 export default function Product() {
   return (
@@ -26,9 +27,29 @@ export default function Product() {
                 {product.images.map((src) => <img key={src} src={src} alt={`${product.name} 제품 이미지`} />)}
               </div>
             )}
-            <List id="features" title="주요 특징" items={product.features} />
-            <List id="usage" title="사용 방법" items={product.usage} ordered />
-            <List id="effects" title="기대 효과" items={product.effects} />
+            <Section id="features" title="주요 특징">
+              {product.features?.length ? (
+                <ul className="cards">
+                  {product.features.map((t) => <li key={t} className="card">{t}</li>)}
+                </ul>
+              ) : <Empty />}
+            </Section>
+            <Section id="usage" title="사용 방법">
+              {product.usage?.length ? (
+                <ol className="steps">
+                  {product.usage.map((t, i) => (
+                    <li key={t}><span className="step-no" aria-hidden="true">{i + 1}</span><span>{t}</span></li>
+                  ))}
+                </ol>
+              ) : <Empty />}
+            </Section>
+            <Section id="effects" title="기대 효과">
+              {product.effects?.length ? (
+                <div className="callout">
+                  <ul>{product.effects.map((t) => <li key={t}>{t}</li>)}</ul>
+                </div>
+              ) : <Empty />}
+            </Section>
             <div className="actions"><BuyButton url={product.purchaseUrl} /></div>
           </>
         )

@@ -3,11 +3,11 @@ import Header from "@/components/Header";
 import { ContentProvider } from "@/lib/content";
 
 export const metadata = {
-  title: "슬리피 — 편안한 밤을 위한 수면 루틴",
-  description: "잠들기 전 10분, 차분한 밤을 만드는 슬리피. 제품 특징과 사용법, FAQ를 확인하세요.",
+  title: "슬리피 — 앱 없이 쓰는 디지털 귀마개 슬리비",
+  description: "약물이 아닌 방법으로 수면을 돕는 슬리피. 디지털 귀마개 슬리비의 원리, 사용법, FAQ를 확인하세요.",
   openGraph: {
     title: "슬리피",
-    description: "편안한 밤을 위한 수면 루틴 서비스",
+    description: "앱 없이 귀에 꽂기만 하는 디지털 귀마개 슬리비",
     type: "website",
     locale: "ko_KR",
   },

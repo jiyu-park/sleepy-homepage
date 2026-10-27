@@ -40,17 +40,18 @@ export function Loader({ lines, children }) {
   return children(data);
 }
 
-export function BuyButton({ url, className = "btn btn-primary" }) {
+export function BuyButton({ url }) {
   if (!url) {
     return (
-      <div>
-        <button className={className} disabled aria-disabled="true">구매하러 가기</button>
-        <p className="hint">구매 링크 준비 중입니다. <Link href="/inquiry">문의로 안내받기</Link></p>
-      </div>
+      <>
+        <Link className="btn btn-primary" href="/inquiry">출시 소식 받기</Link>
+        <button className="btn" disabled aria-disabled="true">구매하러 가기</button>
+        <p className="hint hint-row">구매 링크는 아직 준비 중입니다. 문의를 남겨 주시면 출시 소식을 안내드립니다.</p>
+      </>
     );
   }
   return (
-    <a className={className} href={url} target="_blank" rel="noopener noreferrer">
+    <a className="btn btn-primary" href={url} target="_blank" rel="noopener noreferrer">
       구매하러 가기 <span className="sr-only">(새 창에서 열림)</span>
     </a>
   );

@@ -26,7 +26,8 @@ h2 { font-size: 1.3rem; margin: 40px 0 12px; }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--text); background: #ebe8e3; }
 
 .hero { padding: 40px 0 8px; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-top: 24px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 24px; }
+.hint-row { flex-basis: 100%; margin: 0; order: 2; }
 .btn { display: inline-block; font: inherit; font-weight: 600; padding: 12px 20px; min-height: 44px; border-radius: 10px;
   border: 1px solid var(--border); background: var(--surface); color: var(--text); text-decoration: none; cursor: pointer; }
 .btn-primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
@@ -64,3 +65,10 @@ h2 { font-size: 1.3rem; margin: 40px 0 12px; }
   .gallery { grid-template-columns: repeat(2, 1fr); }
   main { padding-block: 56px 96px; }
 }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.steps li { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 18px; }
+.step-no { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-text); display: grid; place-items: center; font-weight: 700; }
+.callout { background: #eceef4; border-radius: 14px; padding: 8px 22px; }
+.callout ul { margin: 0; padding-left: 1.2em; }
+.callout li { margin: 12px 0; }
