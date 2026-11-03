@@ -1,5 +1,5 @@
 import "./globals.css";
-import Header from "@/components/Header";
+import Chrome from "@/components/Chrome";
 import { ContentProvider } from "@/lib/content";
 
 export const metadata = {
@@ -21,11 +21,7 @@ export default function RootLayout({ children }) {
       <body>
         <a className="skip" href="#main">본문 바로가기</a>
         <ContentProvider>
-          <Header />
-          <main id="main" className="container">{children}</main>
-          <footer className="footer">
-            <div className="container">© Sleepy. 본 서비스는 의료 행위나 치료를 대체하지 않습니다.</div>
-          </footer>
+          <Chrome>{children}</Chrome>
         </ContentProvider>
       </body>
     </html>

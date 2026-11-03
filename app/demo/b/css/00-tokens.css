@@ -1,0 +1,50 @@
+/* B안 디자인 토큰 — 졸리게 톤다운한 어두운 테마. 색·글꼴·여백은 여기 값만 바꾸면 전체에 반영됩니다.
+   포인트 색(--accent)은 구매 버튼과 링크에만 사용합니다. */
+.db {
+  /* 색: 밤하늘처럼 가라앉은 남회색 바탕, 눈이 편한 소프트 화이트 글자 */
+  --bg: #1d1f26;
+  --surface: #252831;
+  --surface-2: #2d303b;
+  --line: #363a47;
+  --text: #dcdde3;          /* 제목·강조 글자 */
+  --body: #b4b7c3;          /* 본문 */
+  --dim: #9a9eae;           /* 흐린 글자 */
+  --hover: #383c49;         /* 알약 버튼·아이콘 호버 면 */
+  --err: #e3b5b5;           /* 오류 글자 */
+  --err-line: #d9a3a3;      /* 오류 테두리 */
+  --accent: #a6d9c1;        /* 포인트 색 1개 (톤다운한 민트) */
+  --accent-strong: #c2ead6; /* 호버 */
+  --on-accent: #16211c;     /* 포인트 색 위 글자 */
+
+  /* 글꼴: 제목 Pretendard 700, 본문 Pretendard 400(가늘게), 부제 Noto Serif KR 300 */
+  --sans: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --serif: "Noto Serif KR", "Nanum Myeongjo", Georgia, serif;
+
+  /* 글자 크기 */
+  --fs-display: clamp(40px, 7vw, 76px);
+  --fs-h2: clamp(28px, 4vw, 44px);
+  --fs-sub: clamp(20px, 2.6vw, 30px);
+  --fs-body: 17px;
+  --fs-small: 14px;
+
+  /* 여백 */
+  --space-section: 128px;
+  --gutter: 24px;
+  --measure: 640px;         /* 본문 한 줄 폭 */
+
+  --night: 0;               /* 화면 어둡게(0~0.6), 머리말 슬라이더가 조절 */
+
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--body);
+  background: var(--bg);
+  line-height: 1.8;
+  word-break: keep-all;
+  min-height: 100vh;
+  padding-bottom: 84px;     /* 모바일 하단 구매 바 자리 */
+}
+@media (max-width: 719px) { .db { --space-section: 72px; --fs-body: 16px; } }
+@media (min-width: 720px) { .db { padding-bottom: 0; } }
+
+/* 화면 어둡게: 화면 전체에 검은 막을 얹음 (클릭은 통과) */
+.db::after { content: ""; position: fixed; inset: 0; z-index: 60; background: #000; opacity: var(--night); pointer-events: none; transition: opacity .4s ease; }

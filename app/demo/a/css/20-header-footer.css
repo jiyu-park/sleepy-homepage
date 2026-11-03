@@ -1,0 +1,35 @@
+/* 머리말 · 푸터 — 이 구역만 고치려면 이 파일만 수정 */
+.sl-header { position: sticky; top: 0; z-index: 5; background: rgba(255,255,255,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.sl-header-in { width: min(100%, 1200px); margin-inline: auto; padding-inline: 24px; height: 88px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.sl-logo { font-size: 24px; line-height: 1; justify-self: start; }
+.sl-nav { display: flex; gap: 40px; }
+.sl-nav a { position: relative; display: block; padding: 32px 0; font-size: 16px; font-weight: 700; }
+.sl-nav a:hover { color: var(--sub); }
+.sl-nav a[aria-current="page"] { color: var(--brand); }
+.sl-nav a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--brand); }
+.sl-footer { background: var(--white); }
+.sl-footer-in { width: min(100%, 1200px); margin-inline: auto; padding-inline: 24px; }
+.sl-footer-top { display: flex; justify-content: space-between; align-items: center; height: 100px; border-bottom: 1px solid var(--line); }
+.sl-footer-logo { font-size: 22px; line-height: 1; }
+.sl-sns { display: flex; gap: 8px; }
+.sl-sns a { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 16px; font-size: var(--fs-s); }
+.sl-footer-body { display: flex; justify-content: space-between; gap: 24px; padding: 24px 0 32px; }
+.sl-legal { display: flex; gap: 24px; font-size: var(--fs-s); color: var(--sub); }
+.sl-legal .is-strong { font-weight: 700; color: var(--text); }
+.sl-small { margin-top: 10px; font-size: var(--fs-s); color: var(--sub); }
+.sl-contacts { display: grid; gap: 8px; font-size: var(--fs-s); align-content: start; }
+.sl-contacts li { display: flex; gap: 16px; }
+.sl-contacts strong { min-width: 64px; }
+.sl-contacts a { color: var(--accent); }
+.sl-contacts a:hover { color: var(--accent-strong); text-decoration: underline; }
+@media (max-width: 719px) {
+  .sl-header-in { height: auto; grid-template-columns: 1fr; padding: 14px 16px 0; row-gap: 0; }
+  .sl-header-in > span { display: none; }
+  .sl-nav { gap: 24px; overflow-x: auto; scrollbar-width: none; }
+  .sl-nav a { padding: 14px 0; white-space: nowrap; }
+  .sl-footer-body { flex-direction: column; }
+  .sl-legal { flex-wrap: wrap; }
+}
+.sl-lang { justify-self: end; display: inline-flex; align-items: center; gap: 8px; font-size: 20px; font-weight: 700; }
+.sl-lang svg { width: 24px; height: 24px; }

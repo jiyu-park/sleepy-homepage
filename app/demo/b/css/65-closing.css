@@ -1,0 +1,5 @@
+/* 마무리 띠: 푸터 바로 위, 구매로 이어지는 조용한 한 번 더 */
+.db-closing { padding: 112px 0; background: var(--surface); text-align: center; }
+.db-closing .db-sub { margin: 20px auto 0; font-size: clamp(18px, 2vw, 22px); }
+.db-closing .db-actions { justify-content: center; margin-top: 40px; }
+@media (max-width: 719px) { .db-closing { display: none; } }

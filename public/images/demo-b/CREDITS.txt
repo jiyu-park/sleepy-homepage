@@ -1,0 +1,8 @@
+hero-forest.jpg
+  Pexels "Silhouette of Forest With Fogs" (photo id 458983)
+  https://www.pexels.com/photo/silhouette-of-forest-with-fogs-458983/
+  License shown on the page: Free (Pexels License). Downloaded 2026-11-03 at width 2400px.
+  Pexels page lists the original source as Pixabay. Re-check the license before the public launch.
+
+hero-forest-m.jpg, og.jpg
+  Resized/cropped copies of hero-forest.jpg (mobile hero, social share preview).

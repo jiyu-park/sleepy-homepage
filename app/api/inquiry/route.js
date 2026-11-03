@@ -35,6 +35,9 @@ export async function POST(req) {
     } catch {
       return NextResponse.json({ error: "forward" }, { status: 502 });
     }
+  } else if (process.env.NODE_ENV === "production") {
+    // 전달할 곳이 없는데 "접수되었습니다"라고 하면 문의가 사라집니다. 설정 전에는 실패로 알립니다.
+    return NextResponse.json({ error: "not_configured" }, { status: 503 });
   } else {
     console.log("[inquiry]", inquiry);
   }

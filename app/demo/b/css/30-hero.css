@@ -1,0 +1,42 @@
+/* 1. 히어로: 풀블리드 배경 이미지(지금은 해 질 녘 그라데이션 자리표시) + 어두운 막 + 왼쪽 아래 제목 */
+.db-hero { position: relative; display: flex; align-items: flex-end; min-height: min(86vh, 820px); padding: 120px 0 88px; overflow: hidden; }
+
+/* 배경 사진: public/images/demo-b/hero-forest.jpg (출처는 같은 폴더의 CREDITS.txt). 다른 사진으로 바꾸려면 url만 교체.
+   청록빛이 강한 사진이라 채도를 낮추고 약간 어둡게 해서 남회색 테마에 맞춤. 사진이 없을 때는 아래 그라데이션이 대신 보임 */
+.db-hero-bg { position: absolute; inset: 0; z-index: 0;
+  background:
+    url("/images/demo-b/hero-forest.jpg") center bottom / cover no-repeat,
+    linear-gradient(180deg, #2f3348 0%, #4d4d66 26%, #77708a 46%, #3b4150 60%, #23262f 82%, var(--bg) 100%);
+  filter: saturate(.6) brightness(.82); }
+/* 글자가 잘 읽히도록 왼쪽을 어둡게 (이 막은 사진과 같이 채도·밝기 필터를 받음) */
+.db-hero-bg::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(29, 31, 38, .82) 0%, rgba(29, 31, 38, .66) 48%, rgba(29, 31, 38, .15) 100%); }
+/* 아래쪽은 다음 구역 배경색과 이어지도록 필터 밖에서 페이드 (톤을 바꿔도 이음새가 안 생김) */
+.db-hero::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: linear-gradient(0deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 35%, transparent) 55%, color-mix(in srgb, var(--bg) 0%, transparent) 100%); }
+
+.db-hero-in { position: relative; z-index: 1; }
+.db-hero h1 { font-size: var(--fs-display); line-height: 1.18; letter-spacing: -0.02em; }
+.db-hero h1 span { display: block; }
+.db-sub { margin-top: 28px; font-family: var(--serif); font-weight: 400; font-size: var(--fs-sub); line-height: 1.6; color: var(--body); max-width: 760px; text-wrap: balance; }
+.db-hero .db-lead { margin-top: 28px; }
+.db-hero .db-actions { margin-top: 40px; }
+@media (max-width: 719px) {
+  .db-hero { min-height: min(80vh, 640px); padding: 96px 0 56px; }
+  .db-hero .db-lead { margin-top: 20px; }
+  .db-hero .db-actions { margin-top: 28px; }
+}
+
+/* 아래로 스크롤 유도 */
+.db-scrollcue { position: absolute; right: max(24px, calc((100% - 1040px) / 2)); bottom: 32px; z-index: 1; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(45, 48, 59, .7); color: var(--text); transition: background .4s ease; }
+.db-scrollcue:hover { background: rgba(56, 60, 73, .9); }
+.db-scrollcue svg { width: 22px; height: 22px; animation: db-bob 2.6s ease-in-out infinite; }
+@keyframes db-bob { 0%, 100% { transform: translateY(-2px); } 50% { transform: translateY(3px); } }
+@media (prefers-reduced-motion: reduce) { .db-scrollcue svg { animation: none; } }
+/* 모바일에서는 작은 사진을 내려받음 (약 1/3 크기) */
+@media (max-width: 719px) {
+  .db-hero-bg { background:
+    url("/images/demo-b/hero-forest-m.jpg") center bottom / cover no-repeat,
+    linear-gradient(180deg, #2f3348 0%, #4d4d66 26%, #77708a 46%, #3b4150 60%, #23262f 82%, var(--bg) 100%); }
+  .db-scrollcue { right: 16px; bottom: 16px; }
+}

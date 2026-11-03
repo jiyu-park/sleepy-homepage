@@ -1,0 +1,27 @@
+/* 확정한 톤 "어둠에서 새벽으로": 히어로(밤) → 소개(밤) → 제품(해 질 녘) → 사용 방법·FAQ(새벽, 밝은 면) → 문의·마무리(아침).
+   바탕·글자 기본값은 00-tokens.css, 구역별로 밝아지는 부분은 이 파일에서 조절합니다. */
+
+.db .db-product {
+  --bg: #323849; --surface: #3d4357; --surface-2: #484f65; --line: #4d556c; --hover: #545c75;
+  --text: #eceef3; --body: #c9ccd8; --dim: #adb1c0;
+  background: var(--bg);
+}
+/* 밝은 면: 변수를 구역 안에서 다시 정의해 안쪽 요소가 자동으로 밝은 테마가 됨 */
+.db .db-usage,
+.db .db-faq,
+.db .db-contact,
+.db .db-closing,
+.db .db-footer {
+  --bg: #e6e9f0; --surface: #f6f7fa; --surface-2: #dbdfe9; --line: #c7ccda; --hover: #cdd2e0;
+  --text: #1b2030; --body: #434a5e; --dim: #566078;
+  --err: #9a3030; --err-line: #b04848;
+  --accent: #2c7a59; --accent-strong: #236548; --on-accent: #ffffff;
+  background: var(--bg); color: var(--body);
+}
+.db .db-faq { --bg: #eceef4; }
+.db .db-contact { --bg: #f2f3f7; }
+.db .db-closing { --bg: #e6e9f0; }
+.db .db-footer { --bg: #1d1f26; --surface: #252831; --line: #363a47; --text: #dcdde3; --body: #b4b7c3; --dim: #9a9eae; color: var(--dim); }
+.db .db-contact { border-top-color: var(--line); }
+/* 밝은 구역 안의 폼 버튼은 어두운 면 + 밝은 글자 */
+.db .db-form .db-pill { background: var(--text); color: var(--surface); }

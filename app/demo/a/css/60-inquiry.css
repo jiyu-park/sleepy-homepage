@@ -1,0 +1,17 @@
+/* 문의 폼 (홈·문의 화면 공통) — 이 구역만 고치려면 이 파일만 수정 */
+.sl-inq { padding: var(--space-section) 0; border-top: 1px solid var(--line); }
+.sl-inq-in { max-width: 560px; }
+.sl-inq h2 { margin-bottom: 40px; }
+.sl-form { display: grid; gap: 16px; }
+.sl-form label { display: block; font-weight: 700; margin-bottom: 4px; }
+.sl-form input, .sl-form textarea { width: 100%; min-height: 44px; padding: 8px 12px; font: inherit; color: var(--text); background: var(--white); border: 1px solid var(--line-img); border-radius: 0; }
+.sl-form textarea { min-height: 140px; resize: vertical; }
+.sl-form [aria-invalid="true"] { border-width: 2px; }
+.sl-err { font-size: var(--fs-s); min-height: 1.4em; margin-top: 4px; font-weight: 700; }
+.sl-count { font-size: var(--fs-s); text-align: right; margin-top: 4px; }
+.sl-notice { border: 1px solid var(--line-img); background: var(--lav); padding: 12px 16px; }
+.sl-notice.is-err { border-width: 2px; }
+.sl-form .sl-btn { justify-self: start; }
+@media (max-width: 719px) {
+  .sl-inq { padding: var(--space-section-sm) 0; }
+}
