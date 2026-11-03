@@ -1,0 +1,36 @@
+/* 디자인 토큰 — 색·글꼴·여백은 여기 값만 바꾸면 전체에 반영됩니다.
+   분위기: 차분함 · 신뢰감 · 밤. 레퍼런스가 정해지면 아래 값만 교체하세요. */
+.sl {
+  /* 색 */
+  --bg: #f6f7fb;            /* 배경 */
+  --white: #ffffff;         /* 카드·머리말·푸터 면 */
+  --surface: #eceef5;       /* 구역 배경(살짝 어두운 면) */
+  --pale: #eef0f7;
+  --lav: #e6e9f2;
+  --text: #161b2e;          /* 글자 (밤하늘 같은 짙은 남색) */
+  --sub: #4f586d;           /* 보조 글자 */
+  --dim: #5c647a;           /* 흐린 글자 */
+  --line: #dce0ea;
+  --line-img: #c5cbd9;
+  --brand: #161b2e;         /* 강조 면(큰 카드·표식): 글자색과 동일, 포인트 색 아님 */
+  --accent: #3345c4;        /* 포인트 색 1개: 구매 버튼과 링크에만 사용 */
+  --accent-strong: #2434a0; /* 포인트 색 눌림/호버 */
+
+  /* 글꼴: Pretendard, 제목 700 · 본문 400 */
+  --font: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+
+  /* 글자 크기 3단계 */
+  --fs-l: 40px; --fs-m: 16px; --fs-s: 14px;
+
+  /* 여백 */
+  --space-section: 104px;
+  --space-section-sm: 64px;
+
+  font-family: var(--font);
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+@media (max-width: 719px) { .sl { --fs-l: 28px; --space-section: 64px; } }

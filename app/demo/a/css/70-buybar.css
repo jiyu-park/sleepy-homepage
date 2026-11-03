@@ -1,0 +1,10 @@
+/* 하단 고정 구매 바 (모바일) — 이 구역만 고치려면 이 파일만 수정 */
+.sl { padding-bottom: 76px; }
+@media (min-width: 720px) {
+  .sl { padding-bottom: 0; }
+}
+.sl-buybar { display: none; }
+@media (max-width: 719px) {
+  .sl-buybar { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: var(--white); border-top: 1px solid var(--line); padding: 8px 16px; }
+  .sl-buybar .sl-btn { width: 100%; }
+}

@@ -1,0 +1,14 @@
+/* 5. FAQ 아코디언 */
+.db-faq { padding: var(--space-section) 0; border-top: 1px solid var(--line); }
+.db-faq h2 { margin-bottom: 48px; }
+.db-faq-list { max-width: 800px; }
+.db-faq details { border-top: 1px solid var(--line); }
+.db-faq details:last-child { border-bottom: 1px solid var(--line); }
+.db-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 14px 0; cursor: pointer; color: var(--text); font-weight: 700; font-size: 18px; }
+.db-faq summary::-webkit-details-marker { display: none; }
+.db-faq summary::after { content: "+"; flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--surface-2); color: var(--body); font-weight: 400; transition: background .4s ease; }
+.db-faq details[open] summary::after { content: "−"; }
+.db-faq summary:hover::after { background: var(--hover); }
+.db-faq details p { padding: 0 48px 28px 0; max-width: var(--measure); font-weight: 300; }
+
+.db-faq summary .db-badge { margin-left: 12px; vertical-align: middle; }
