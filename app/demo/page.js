@@ -4,7 +4,7 @@ export const metadata = { title: "슬리피 디자인 데모" };
 
 const DEMOS = [
   { href: "/demo/b", name: "B안", note: "졸리게 톤다운한 어두운 테마, 풀블리드 숲 사진 히어로", ready: true },
-  { name: "C안", note: "준비 중", ready: false },
+  { href: "/demo/c", name: "C안", note: "밝고 조용한 제품 소개, Apple 느낌의 라이트 테마", ready: true },
 ];
 
 export default function DemoIndex() {

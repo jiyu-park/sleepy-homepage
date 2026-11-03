@@ -1,0 +1,42 @@
+/* 공통: 기본 요소·알약 버튼·링크·등장 효과 */
+.dc *, .dc *::before, .dc *::after { box-sizing: border-box; }
+.dc :where(h1, h2, h3, p, ul, ol, figure) { margin: 0; padding: 0; }
+.dc :where(ul, ol) { list-style: none; }
+:where(.dc) a { color: inherit; text-decoration: none; }
+.dc main { padding: 0; min-height: 0; }  /* 기존 globals.css의 main 여백이 새어 들어오는 것을 막음 */
+.dc :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.dc-wrap { width: min(100% - var(--gutter) * 2, 1040px); margin-inline: auto; }
+.dc section { scroll-margin-top: 72px; }
+.dc h1, .dc h2, .dc h3 { color: var(--text); font-weight: 700; }
+.dc h2 { font-size: var(--fs-h2); line-height: 1.2; letter-spacing: -0.025em; }
+.dc-kicker { font-size: 21px; font-weight: 700; color: var(--text); margin-bottom: 12px; letter-spacing: -0.01em; }
+.dc-lead { max-width: 680px; font-size: var(--fs-lead); line-height: 1.5; font-weight: 600; letter-spacing: -0.02em; color: var(--sub); }
+.dc-body { max-width: 680px; font-size: var(--fs-body); color: var(--sub); }
+
+/* 알약 버튼: 구매·알림은 파랑, 그 밖은 어두운 면 */
+.dc-pill { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 28px; border: 0; border-radius: 999px;
+  font: inherit; font-size: 17px; font-weight: 500; line-height: 1; cursor: pointer; white-space: nowrap; background: var(--text); color: #fff; transition: background .3s ease; }
+.dc-pill:hover { background: #424245; }
+.dc-pill-buy { background: var(--accent); color: var(--on-accent); }
+.dc-pill-buy:hover { background: var(--accent-strong); }
+.dc-pill:disabled { opacity: .6; cursor: not-allowed; }
+.dc-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px 28px; }
+.dc-textlink, .dc-hint a { color: var(--link); font-size: 17px; }
+.dc-textlink:hover, .dc-hint a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.dc-textlink { display: inline-flex; align-items: center; min-height: 44px; gap: 4px; }
+.dc-hint { margin-top: 20px; font-size: var(--fs-small); color: var(--sub); }
+.dc-hint a { display: inline-block; padding: 14px 6px; margin: -14px -6px; font-size: inherit; }
+.dc-badge { display: inline-block; padding: 1px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 400; color: var(--sub); vertical-align: middle; }
+
+/* 부드럽게 나타나는 효과 (Apple 느낌의 완만한 가속) */
+.dc .sl-reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.28, .11, .32, 1), transform .9s cubic-bezier(.28, .11, .32, 1); }
+.dc .sl-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .dc .sl-reveal { opacity: 1; transform: none; transition: none; }
+  .dc * { transition: none !important; scroll-behavior: auto !important; }
+}
+.dc .skeleton-wrap { width: min(100% - 48px, 720px); margin: 96px auto; }
+.dc .skeleton { background: var(--surface); animation: none; height: 18px; border-radius: 9px; }
+.dc .state-box { width: min(100% - 48px, 560px); margin: 96px auto; background: var(--surface); border-radius: var(--radius); padding: 32px 24px; text-align: center; }
+.dc .state-box .btn { background: var(--text); color: #fff; border: 0; border-radius: 999px; padding: 12px 24px; font: inherit; font-weight: 500; cursor: pointer; }
+.dc .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

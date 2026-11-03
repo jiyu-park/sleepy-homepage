@@ -1,0 +1,23 @@
+/* 따라다니는 기기(제품 컷) 커서 — 장식. 끄고 싶으면 layout.js에서 <EarbudCursor />만 지우면 됩니다 */
+.dc-ear { position: fixed; left: 0; top: 0; z-index: 60; width: 54px; pointer-events: none; opacity: 0; transition: opacity .3s ease; will-change: transform; }
+.dc-ear[data-ready="1"]:not([data-hidden="1"]) { opacity: 1; }
+.dc-ear img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; filter: drop-shadow(0 6px 8px rgba(0, 0, 0, .2)); }
+.dc-ear-touch { left: auto; right: 10px; width: 46px; opacity: 0; }
+.dc-ear-touch[data-ready="1"]:not([data-hidden="1"]) { opacity: .92; }
+/* 사용 방법 위: 귀에 꽂는 동작 한 번 (살짝 물러났다가 들어감) */
+.dc-ear img.is-plug { animation: dc-plug 1.2s ease-in-out; }
+@keyframes dc-plug {
+  0% { transform: translate(0, 0) scale(1); }
+  35% { transform: translate(-10px, -10px) scale(1.06); }
+  65% { transform: translate(12px, 10px) scale(.86); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+/* 클릭 물결 */
+.dc-ripples { position: fixed; inset: 0; z-index: 59; pointer-events: none; overflow: hidden; }
+.dc-ripples span { position: absolute; width: 28px; height: 28px; margin: -14px 0 0 -14px; border: 2px solid rgba(29, 29, 31, .28); border-radius: 50%; animation: dc-ripple .7s ease-out forwards; }
+@keyframes dc-ripple { from { transform: scale(.3); opacity: 1; } to { transform: scale(2.4); opacity: 0; } }
+/* 끄기 버튼 (마우스 기기에서만 표시) */
+.dc-ear-toggle { position: fixed; left: 16px; bottom: 16px; z-index: 61; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(251, 251, 253, .9); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: var(--text); font: inherit; font-size: 13px; cursor: pointer; transition: background .3s ease; }
+.dc-ear-toggle:hover { background: #fff; }
+.dc-ear-toggle[aria-pressed="false"] { color: var(--sub); }
+@media (prefers-reduced-motion: reduce) { .dc-ear img.is-plug, .dc-ripples span { animation: none; } }

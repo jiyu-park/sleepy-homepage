@@ -1,0 +1,4 @@
+earbud.png
+  Cut-out of one Sleepy earbud made from public/images/home/hero.jpg (company's own product photo),
+  using macOS Vision foreground-instance masking on a cropped, upscaled region. Transparent background.
+  Source resolution is low (~166px wide in the original photo); replace with a proper studio cut-out when available.

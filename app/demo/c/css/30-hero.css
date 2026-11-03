@@ -1,0 +1,15 @@
+/* 1. 히어로: 크림 바탕, 가운데 정렬의 큰 제목 → 제품 사진 → 부제 → 구매 버튼 */
+.dc-hero { background: var(--cream); text-align: center; padding: 72px 0 96px; }
+.dc-eyebrow { font-size: clamp(19px, 2vw, 24px); font-weight: 700; margin-bottom: 8px; }
+.dc-hero h1 { font-size: var(--fs-display); line-height: 1.16; letter-spacing: -0.035em; }
+.dc-hero h1 span { display: block; }
+.dc-hero-media { margin: 56px auto 0; max-width: 920px; }
+.dc-hero-img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 42%; border-radius: var(--radius); background: var(--surface); }
+.dc-sub { margin: 48px auto 0; max-width: 720px; font-size: var(--fs-lead); line-height: 1.45; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance; }
+.dc-hero .dc-actions { margin-top: 32px; }
+@media (max-width: 719px) {
+  .dc-hero { padding: 40px 0 64px; }
+  .dc-hero-media { margin-top: 36px; }
+  .dc-hero-img { aspect-ratio: 4 / 3; object-position: 36% 50%; }
+  .dc-sub { margin-top: 32px; }
+}
