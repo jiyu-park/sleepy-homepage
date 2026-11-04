@@ -1,8 +1,0 @@
-/* C안 전용 스타일: 모든 선택자는 .dc 아래에서만 */
-.dc { min-height: 100vh; background: #fff; color: #222; line-height: 1.7; word-break: keep-all; }
-.dc a { color: inherit; }
-.dc-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; }
-.dc-logo { font-weight: 800; text-decoration: none; }
-.dc-hero img { max-width: 100%; height: auto; }
-.dc main { padding: 24px; }
-.dc-footer { padding: 24px; color: #888; }

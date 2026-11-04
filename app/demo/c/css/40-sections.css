@@ -1,0 +1,38 @@
+/* 2. 소개(큰 선언문) · 3. 제품 카드 · 4. 사용 방법과 기대 효과 */
+.dc-about { background: var(--white); padding: var(--space-section) 0; }
+.dc-statement { max-width: 880px; font-size: clamp(26px, 3.8vw, 46px); line-height: 1.3; font-weight: 700; letter-spacing: -0.03em; color: var(--text); }
+.dc-statement .dc-muted { color: #86868b; }
+
+.dc-product { background: var(--surface); padding: var(--space-section) 0; }
+.dc-product h2 { margin-bottom: 20px; }
+.dc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 64px; }
+.dc-card { background: var(--white); border-radius: var(--radius); padding: 20px 20px 36px; min-width: 0; }
+.dc-card h3 { margin-top: 28px; padding-inline: 12px; font-size: 14px; font-weight: 700; letter-spacing: .08em; color: var(--sub); }
+.dc-card p { margin-top: 8px; padding-inline: 12px; font-size: clamp(20px, 2vw, 24px); line-height: 1.4; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+.dc-crop { aspect-ratio: 4 / 3; border-radius: 18px; background-color: var(--surface); background-image: url("/images/home/hero.jpg"); background-repeat: no-repeat; }
+/* 특징 카드 사진: 같은 제품 사진을 서로 다른 부분으로 확대. 새 촬영본이 생기면 background-image만 교체 */
+.dc-crop-1 { background-size: 340% auto; background-position: 33% 58.3%; }
+.dc-crop-2 { background-size: 320% auto; background-position: 22.4% 40.1%; }
+.dc-crop-3 { background-size: 320% auto; background-position: 75.5% 78.3%; }
+
+.dc-usage { --sub: #56565b; background: var(--tint); padding: var(--space-section) 0; }  /* 옅은 푸른 회색 바탕에서 보조 글자를 진하게 */
+.dc-usage h2 { margin-bottom: 64px; }
+.dc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.dc-step-no { display: block; font-size: clamp(56px, 8vw, 96px); line-height: 1; font-weight: 700; letter-spacing: -0.04em; color: #727277; }
+.dc-step p { margin-top: 20px; font-size: clamp(19px, 1.9vw, 22px); line-height: 1.5; font-weight: 600; letter-spacing: -0.02em; }
+.dc-effects { margin-top: 96px; max-width: 760px; }
+.dc-effects h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-size: 19px; margin-bottom: 16px; }
+.dc-effects ul { display: grid; gap: 12px; }
+.dc-effects li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.75; color: var(--sub); }
+.dc-effects li::before { content: ""; position: absolute; left: 0; top: .85em; width: 5px; height: 5px; border-radius: 50%; background: var(--sub); }
+@media (max-width: 899px) {
+  /* 카드를 옆으로 밀어 넘기는 형태 */
+  .dc-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin: 40px calc(var(--gutter) * -1) 0; padding: 4px var(--gutter) 12px; scrollbar-width: none; }
+  .dc-cards::-webkit-scrollbar { display: none; }
+  .dc-card { flex: 0 0 min(82%, 360px); scroll-snap-align: center; }
+  .dc-steps { grid-template-columns: 1fr; gap: 32px; }
+  .dc-step { display: grid; grid-template-columns: 88px 1fr; align-items: center; }
+  .dc-step p { margin-top: 0; }
+  .dc-step-no { font-size: 56px; }
+}
+@media (max-width: 719px) { .dc-usage h2 { margin-bottom: 40px; } .dc-effects { margin-top: 56px; } }

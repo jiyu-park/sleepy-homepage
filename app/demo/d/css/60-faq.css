@@ -1,0 +1,12 @@
+/* 5. FAQ (흰 면, 둥근 연회색 줄) */
+.dd-faq { padding: var(--space-section) 0; background: var(--white); }
+.dd-faq h2 { margin-bottom: 40px; }
+.dd-faq-list { max-width: 840px; display: grid; gap: 12px; }
+.dd-faq details { background: var(--surface); border-radius: var(--r-btn); }
+.dd-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 12px 24px; cursor: pointer; font-size: 17px; font-weight: 700; color: var(--heading); border-radius: var(--r-btn); }
+.dd-faq summary::-webkit-details-marker { display: none; }
+.dd-faq summary::after { content: "+"; flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--white); color: var(--text); font-size: 20px; font-weight: 400; }
+.dd-faq details[open] summary::after { content: "−"; }
+.dd-faq details p { padding: 0 24px 24px; max-width: 700px; font-size: var(--fs-body); color: var(--text); }
+.dd-faq summary .dd-tag { margin-left: 10px; background: var(--white); }
+@media (max-width: 719px) { .dd-faq summary { padding: 12px 18px; font-size: 16px; } .dd-faq details p { padding: 0 18px 20px; } }

@@ -1,0 +1,45 @@
+/* C안 디자인 토큰 — 밝고 조용한 제품 소개(Apple 느낌). 색·글꼴·여백은 여기 값만 바꾸면 전체에 반영됩니다.
+   포인트 색(--accent)은 구매 버튼, --link는 본문 링크에만 사용합니다. */
+.dc {
+  /* 색: 구역마다 면 색을 번갈아 써서 선 없이 구분 */
+  --bg: #fbfbfd;
+  --white: #ffffff;
+  --surface: #f5f5f7;      /* 연회색 면 */
+  --cream: #faf7f4;        /* 히어로 */
+  --tint: #e8edf5;         /* 사용 방법 구역(옅은 푸른 회색) */
+  --text: #1d1d1f;
+  --sub: #6e6e73;
+  --line: #d2d2d7;
+  --accent: #0071e3;       /* 포인트 색 1개: 구매 버튼 */
+  --accent-strong: #0062c4;
+  --on-accent: #ffffff;
+  --link: #0066cc;         /* 본문 링크 */
+  --err: #c0392b;
+
+  /* 글꼴: Mac에서는 시스템 글꼴(SF)이 먼저 쓰이고, 없으면 Pretendard */
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+
+  /* 글자 크기 */
+  --fs-display: clamp(40px, 7.4vw, 80px);
+  --fs-h2: clamp(30px, 4.6vw, 56px);
+  --fs-lead: clamp(20px, 2.4vw, 28px);
+  --fs-body: 17px;
+  --fs-small: 14px;
+
+  /* 여백·모양 */
+  --space-section: 128px;
+  --gutter: 24px;
+  --radius: 28px;
+
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+  min-height: 100vh;
+  padding-bottom: 84px;    /* 모바일 하단 구매 바 자리 */
+}
+@media (max-width: 719px) { .dc { --space-section: 72px; --fs-body: 16px; --radius: 22px; } }
+@media (min-width: 720px) { .dc { padding-bottom: 0; } }

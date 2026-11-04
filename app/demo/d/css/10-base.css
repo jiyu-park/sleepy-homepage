@@ -1,0 +1,44 @@
+/* 공통: 기본 요소 · 버튼(12px, 호버는 투명도 0.9) · 링크 · 등장 효과 */
+.dd *, .dd *::before, .dd *::after { box-sizing: border-box; }
+.dd :where(h1, h2, h3, p, ul, ol, figure) { margin: 0; padding: 0; }
+.dd :where(ul, ol) { list-style: none; }
+:where(.dd) a { color: inherit; text-decoration: none; }
+.dd main { padding: 0; min-height: 0; }  /* 기존 globals.css의 main 여백이 새어 들어오는 것을 막음 */
+.dd :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.dd-wrap { width: min(100% - var(--gutter) * 2, 1120px); margin-inline: auto; }
+.dd section { scroll-margin-top: 96px; }
+.dd h1, .dd h2, .dd h3 { color: var(--heading); font-weight: 700; }
+.dd h1 { font-size: var(--fs-h1); line-height: 1.5; letter-spacing: -0.01em; }
+.dd h2 { font-size: var(--fs-h2); line-height: 1.5; letter-spacing: -0.01em; }
+.dd-tag { display: inline-flex; align-items: center; min-height: 26px; padding: 0 10px; border-radius: 6px; background: var(--surface); font-size: 12px; font-weight: 700; line-height: 1.5; color: var(--text); }
+.dd-lead { max-width: 600px; font-size: var(--fs-lead); line-height: 1.8; color: var(--text); }
+.dd-body { max-width: 600px; font-size: var(--fs-body); color: var(--text); }
+
+/* 버튼 */
+.dd-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 1px solid transparent; border-radius: var(--r-btn);
+  font-family: var(--latin); font-size: 15px; font-weight: 700; line-height: 1.5; cursor: pointer; white-space: nowrap; transition: opacity .15s cubic-bezier(.4, 0, .2, 1), color .15s cubic-bezier(.4, 0, .2, 1), border-color .15s cubic-bezier(.4, 0, .2, 1), background-color .15s cubic-bezier(.4, 0, .2, 1); }
+.dd-btn-buy { background: var(--blue); color: var(--on-blue); }
+.dd-btn-buy:hover { opacity: .9; }
+.dd-btn-secondary { background: var(--white); color: #333333; border-color: var(--line-strong); }
+.dd-btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
+.dd-btn-dark { background: var(--ink); color: var(--white); }
+.dd-btn-dark:hover:not(:disabled) { opacity: .9; }
+.dd-btn:disabled { opacity: .6; cursor: not-allowed; }
+.dd-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.dd-textlink { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; color: var(--blue); font-size: 15px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; transition: opacity .15s cubic-bezier(.4, 0, .2, 1); }
+.dd-textlink:hover { opacity: .8; }
+.dd-hint { margin-top: 16px; font-size: var(--fs-small); color: var(--text); }
+.dd-hint a { display: inline-block; padding: 14px 6px; margin: -14px -6px; color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* 등장 효과: 짧고 담백하게 */
+.dd .sl-reveal { opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; }
+.dd .sl-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .dd .sl-reveal { opacity: 1; transform: none; transition: none; }
+  .dd *, .dd *::before, .dd *::after { transition: none !important; }
+}
+.dd .skeleton-wrap { width: min(100% - 48px, 720px); margin: 96px auto; }
+.dd .skeleton { background: var(--surface); animation: none; height: 18px; border-radius: 9px; }
+.dd .state-box { width: min(100% - 48px, 560px); margin: 96px auto; background: var(--surface); border-radius: var(--r-card); padding: 32px 24px; text-align: center; color: var(--heading); }
+.dd .state-box .btn { background: var(--blue); color: #fff; border: 0; border-radius: var(--r-btn); padding: 12px 24px; font: inherit; font-weight: 700; cursor: pointer; }
+.dd .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

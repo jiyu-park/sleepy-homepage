@@ -1,0 +1,14 @@
+/* 5. FAQ 아코디언 */
+.dc-faq { background: var(--white); padding: var(--space-section) 0; }
+.dc-faq h2 { margin-bottom: 48px; }
+.dc-faq-list { max-width: 800px; }
+.dc-faq details { border-top: 1px solid var(--line); }
+.dc-faq details:last-child { border-bottom: 1px solid var(--line); }
+.dc-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 68px; padding: 14px 0; cursor: pointer; font-size: 21px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
+.dc-faq summary::-webkit-details-marker { display: none; }
+.dc-faq summary::after { content: "+"; flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--surface); color: var(--sub); font-size: 20px; font-weight: 400; transition: background .3s ease; }
+.dc-faq details[open] summary::after { content: "−"; }
+.dc-faq summary:hover::after { background: #e8e8ed; }
+.dc-faq details p { padding: 0 48px 28px 0; max-width: 680px; font-size: var(--fs-body); color: var(--sub); }
+.dc-faq summary .dc-badge { margin-left: 12px; }
+@media (max-width: 719px) { .dc-faq summary { font-size: 18px; } }

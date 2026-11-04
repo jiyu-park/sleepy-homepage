@@ -1,0 +1,5 @@
+/* 마무리 띠: 푸터 바로 위, 구매로 이어지는 조용한 한 번 더 (모바일은 하단 바가 대신함) */
+.dc-closing { background: var(--cream); padding: 112px 0; text-align: center; }
+.dc-closing .dc-lead { margin: 20px auto 0; color: var(--text); }
+.dc-closing .dc-actions { margin-top: 36px; }
+@media (max-width: 719px) { .dc-closing { display: none; } }
