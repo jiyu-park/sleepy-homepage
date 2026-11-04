@@ -1,0 +1,50 @@
+/* D안 디자인 토큰 — "따뜻하고 똑똑하게 곁에": 부드러운 라이트 톤, 단색 면, 12px 모서리, 파랑 하나.
+   포인트 색(--blue)은 구매 버튼과 링크에만 씁니다. 연한 파랑·연한 분홍은 면(배경)으로만 씁니다(그라데이션 없음).
+   (Ubie 디자인 시스템 문서의 색·타이포·간격 규칙을 참고했으며 로고·문구·이미지는 쓰지 않았습니다) */
+.dd {
+  /* 색 */
+  --white: #ffffff;
+  --bg: #ffffff;
+  --surface: #f5f5f5;       /* 연회색 면 */
+  --blue-pale: #ebeefa;     /* 히어로 면 */
+  --blue-bg: #f0f2fc;       /* 문의 면 */
+  --pink-pale: #fde3ed;     /* 사용 방법 면(따뜻함) */
+  --heading: #20242c;
+  --text: #3d4454;
+  --muted: #686a6d;         /* 흰색·연회색·연한 파랑 위에서만 */
+  --line: #dcdddd;
+  --line-strong: #cccccc;
+  --blue: #3959cc;          /* 포인트 색 1개: 구매 버튼과 링크 */
+  --on-blue: #ffffff;
+  --ink: #32353a;           /* 파랑이 아닌 주 버튼(문의 보내기) */
+  --err: #a1213c;
+
+  /* 글꼴: 한글 Noto Sans KR, 라틴 Open Sans. 본문 400, 버튼 700, 메뉴 900 */
+  --sans: "Noto Sans KR", "Open Sans", -apple-system, "Apple SD Gothic Neo", system-ui, sans-serif;
+  --latin: "Open Sans", "Noto Sans KR", system-ui, sans-serif;
+
+  /* 글자 크기 (줄 높이 170%가 기본) */
+  --fs-h1: clamp(30px, 4vw, 50px);
+  --fs-h2: clamp(26px, 3vw, 36px);
+  --fs-lead: clamp(17px, 1.6vw, 19px);
+  --fs-body: 16px;
+  --fs-small: 14px;
+
+  /* 간격(4/8/12/16/24/40/64)과 모서리 */
+  --space-section: 104px;
+  --gutter: 24px;
+  --r-btn: 12px;
+  --r-card: 16px;
+  --r-big: 24px;
+
+  font-family: var(--sans);
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+  word-break: keep-all;
+  min-height: 100vh;
+  padding-bottom: 84px;     /* 모바일 하단 구매 바 자리 */
+}
+@media (max-width: 719px) { .dd { --space-section: 64px; --r-card: 14px; --r-big: 20px; } }
+@media (min-width: 720px) { .dd { padding-bottom: 0; } }

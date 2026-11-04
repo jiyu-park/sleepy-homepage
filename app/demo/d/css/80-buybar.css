@@ -1,0 +1,6 @@
+/* 7. 하단 고정 구매 바 — 모바일(719px 이하)에서 항상 표시 */
+.dd-buybar { display: none; }
+@media (max-width: 719px) {
+  .dd-buybar { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--white); border-top: 1px solid var(--line); }
+  .dd-buybar .dd-btn { width: 100%; }
+}
