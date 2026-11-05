@@ -1,0 +1,5 @@
+/* 마무리 띠(흰 면): 푸터 바로 위, 구매로 이어지는 조용한 한 번 더 (모바일은 하단 바가 대신함) */
+.da-closing { padding: 88px 0; background: var(--white); }
+.da-closing-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; padding: 40px 48px; background: var(--blue-pale); border-radius: var(--r-big); }
+.da-closing h2 { margin-bottom: 8px; }
+@media (max-width: 719px) { .da-closing { display: none; } }

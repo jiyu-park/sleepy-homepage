@@ -1,0 +1,16 @@
+/* 5. FAQ (흰 면, 둥근 연회색 줄) */
+.da-faq { padding: var(--space-section) 0; background: var(--white); }
+.da-faq h2 { margin-bottom: 40px; }
+.da-faq-list { max-width: 840px; display: grid; gap: 12px; }
+.da-faq details { background: var(--surface); border-radius: var(--r-btn); }
+.da-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 12px 24px; cursor: pointer; font-size: 17px; font-weight: 700; color: var(--heading); border-radius: var(--r-btn); }
+.da-faq summary::-webkit-details-marker { display: none; }
+.da-faq summary::after { content: "+"; flex: none; width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--white); color: var(--text); font-size: 20px; font-weight: 400; }
+.da-faq details[open] summary::after { content: "−"; }
+.da-faq details p { padding: 0 24px 24px; max-width: 700px; font-size: var(--fs-body); color: var(--text); }
+.da-faq summary .da-tag { margin-left: 10px; background: var(--white); }
+@media (max-width: 719px) { .da-faq summary { padding: 12px 18px; font-size: 16px; } .da-faq details p { padding: 0 18px 20px; } }
+
+.da-faq details { transition: background-color .2s ease; }
+.da-faq details[open] { background: var(--blue-bg); }
+@media (hover: hover) { .da-faq details:hover { background: var(--blue-bg); } }
