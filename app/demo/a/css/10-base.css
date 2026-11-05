@@ -1,40 +1,44 @@
-/* 공통: 기본 글꼴·버튼·상태·등장 효과 — 이 구역만 고치려면 이 파일만 수정 */
-:where(.sl) :where(h1, h2, h3, p, ul, ol) { margin: 0; padding: 0; }
-:where(.sl) :where(ul, ol) { list-style: none; }
-:where(.sl) a { color: inherit; text-decoration: none; }
-.sl .sl-main { padding: 0; min-height: 0; }
-.sl :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
-.sl-wrap { width: min(100% - 48px, 1120px); margin-inline: auto; }
-:where(.sl) h1 { font-size: var(--fs-l); font-weight: 700; line-height: 1.3; }
-:where(.sl) h2 { font-size: var(--fs-l); font-weight: 700; line-height: 1.4; text-align: center; }
-.sl-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 120px; height: 52px; padding-inline: 30px;
-  border-radius: 26px; font: inherit; font-size: var(--fs-m); font-weight: 700; line-height: 1; cursor: pointer; white-space: nowrap; }
-.sl-btn-primary { background: var(--brand); color: var(--white); border: 1px solid var(--brand); }
-.sl-btn-secondary { background: var(--white); color: var(--text); border: 1px solid var(--line-img); }
-.sl-btn:hover:not(:disabled) { filter: brightness(.96); }
-.sl-btn-primary:hover:not(:disabled) { filter: brightness(1.25); }
-.sl-btn:disabled { opacity: .5; cursor: not-allowed; }
-.sl-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.sl-hint { margin-top: 12px; font-size: var(--fs-s); color: var(--sub); text-align: center; }
-.sl-btn-buy { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-.sl-btn-buy:hover:not(:disabled) { background: var(--accent-strong); border-color: var(--accent-strong); filter: none; }
-.sl-hint a, .sl-plain a:not(.sl-btn) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-.sl .skeleton-wrap { width: min(100% - 48px, 960px); margin: 80px auto; }
-.sl .state-box { width: min(100% - 48px, 560px); margin: 80px auto; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px 24px; text-align: center; }
-.sl .state-box p { margin-bottom: 16px; }
-.sl .state-box .btn { display: inline-block; padding: 12px 20px; border-radius: 26px; border: 1px solid var(--line-img); background: var(--white); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; }
-.sl-reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
-.sl-reveal.is-in { opacity: 1; transform: none; }
+/* 공통: 기본 요소 · 버튼(12px, 호버는 투명도 0.9) · 링크 · 등장 효과 */
+.da *, .da *::before, .da *::after { box-sizing: border-box; }
+.da :where(h1, h2, h3, p, ul, ol, figure) { margin: 0; padding: 0; }
+.da :where(ul, ol) { list-style: none; }
+:where(.da) a { color: inherit; text-decoration: none; }
+.da main { padding: 0; min-height: 0; }  /* 기존 globals.css의 main 여백이 새어 들어오는 것을 막음 */
+.da :focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.da-wrap { width: min(100% - var(--gutter) * 2, 1120px); margin-inline: auto; }
+.da section { scroll-margin-top: 96px; }
+.da h1, .da h2, .da h3 { color: var(--heading); font-weight: 700; }
+.da h1 { font-size: var(--fs-h1); line-height: 1.5; letter-spacing: -0.01em; }
+.da h2 { font-size: var(--fs-h2); line-height: 1.5; letter-spacing: -0.01em; }
+.da-tag { display: inline-flex; align-items: center; min-height: 26px; padding: 0 10px; border-radius: 6px; background: var(--surface); font-size: 12px; font-weight: 700; line-height: 1.5; color: var(--text); }
+.da-lead { max-width: 600px; font-size: var(--fs-lead); line-height: 1.8; color: var(--text); }
+.da-body { max-width: 600px; font-size: var(--fs-body); color: var(--text); }
+
+/* 버튼 */
+.da-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border: 1px solid transparent; border-radius: var(--r-btn);
+  font-family: var(--latin); font-size: 15px; font-weight: 700; line-height: 1.5; cursor: pointer; white-space: nowrap; transition: opacity .15s cubic-bezier(.4, 0, .2, 1), color .15s cubic-bezier(.4, 0, .2, 1), border-color .15s cubic-bezier(.4, 0, .2, 1), background-color .15s cubic-bezier(.4, 0, .2, 1); }
+.da-btn-buy { background: var(--blue); color: var(--on-blue); }
+.da-btn-buy:hover { opacity: .9; }
+.da-btn-secondary { background: var(--white); color: #333333; border-color: var(--line-strong); }
+.da-btn-secondary:hover { color: var(--blue); border-color: var(--blue); }
+.da-btn-dark { background: var(--ink); color: var(--white); }
+.da-btn-dark:hover:not(:disabled) { opacity: .9; }
+.da-btn:disabled { opacity: .6; cursor: not-allowed; }
+.da-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.da-textlink { display: inline-flex; align-items: center; min-height: 44px; gap: 6px; color: var(--blue); font-size: 15px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; transition: opacity .15s cubic-bezier(.4, 0, .2, 1); }
+.da-textlink:hover { opacity: .8; }
+.da-hint { margin-top: 16px; font-size: var(--fs-small); color: var(--text); }
+.da-hint a { display: inline-block; padding: 14px 6px; margin: -14px -6px; color: var(--blue); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* 등장 효과: 짧고 담백하게 */
+.da .sl-reveal { opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease; }
+.da .sl-reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .sl-reveal, .sl-ear, .sl-head, .sl-cap, .sl-line, .sl-step, .sl-steps::before { opacity: 1 !important; transform: none !important; clip-path: none !important; transition: none !important; }
+  .da .sl-reveal { opacity: 1; transform: none; transition: none; }
+  .da *, .da *::before, .da *::after { transition: none !important; }
 }
-@media (max-width: 719px) {
-  .sl h1 { font-size: var(--fs-l); }
-  .sl h2 { font-size: var(--fs-l); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .sl * { transition: none !important; }
-}
-.sl img { filter: grayscale(1); }
-.sl-btn { min-height: 44px; }
-.sl .state-box .btn { border-radius: 0; border-color: var(--line-img); }
+.da .skeleton-wrap { width: min(100% - 48px, 720px); margin: 96px auto; }
+.da .skeleton { background: var(--surface); animation: none; height: 18px; border-radius: 9px; }
+.da .state-box { width: min(100% - 48px, 560px); margin: 96px auto; background: var(--surface); border-radius: var(--r-card); padding: 32px 24px; text-align: center; color: var(--heading); }
+.da .state-box .btn { background: var(--blue); color: #fff; border: 0; border-radius: var(--r-btn); padding: 12px 24px; font: inherit; font-weight: 700; cursor: pointer; }
+.da .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

@@ -1,85 +1,155 @@
 "use client";
-import Link from "next/link";
 import { Loader } from "@/components/States";
 import Reveal from "@/components/site/Reveal";
+import BuyLink from "@/components/demo/a/BuyLink";
 import InquiryForm from "@/components/demo/a/InquiryForm";
 
-function BuyPill({ url }) {
-  if (!url) {
-    return <button className="sl-btn sl-btn-buy" disabled aria-disabled="true">구매하러 가기</button>;
-  }
-  return (
-    <a className="sl-btn sl-btn-buy" href={url} target="_blank" rel="noopener noreferrer">
-      구매하러 가기 <span className="sr-only">(새 창에서 열림)</span>
-    </a>
-  );
+const CROP_ALT = ["슬리비 본체 두 개를 확대한 사진", "슬리비 충전 케이스를 확대한 사진", "슬리비 사용 설명서를 확대한 사진"];
+
+/** 소개 글: 회사 소개 한 줄 + 브랜드 이야기 문장들(초안 안내 괄호는 제외), 3문장 이내 */
+function aboutSentences(company) {
+  const story = (company.brandStory || "").replace(/\(※[^)]*\)/g, "").trim();
+  const parts = story.split(/(?<=다\.)\s+/).filter(Boolean);
+  return [company.intro, ...parts].filter(Boolean).slice(0, 3);
 }
 
-export default function Home() {
+/** FAQ는 5개로 맞추고, 비어 있는 칸은 자리표시로 둡니다 */
+function faqFive(faq = []) {
+  const items = faq.slice(0, 5).map((f) => ({ id: f.id, q: f.question, a: f.answer }));
+  for (let i = items.length; i < 5; i++) items.push({ id: `ph-${i}`, q: `[질문 ${i + 1}]`, a: `[답변 ${i + 1}]`, ph: true });
+  return items;
+}
+
+/** 히어로 카드: 제품 정보(product.features·usage)에 있는 사실만 사용 */
+const HERO_FACTS = [
+  ["스마트폰 연결", "필요 없어요"],
+  ["설정", "귀에 꽂으면 바로 재생"],
+  ["소리 방식", "양쪽 귀에 다른 소리"],
+];
+
+const no = (i) => String(i + 1).padStart(2, "0");
+
+export default function DemoA() {
   return (
     <Loader lines={4}>
-      {({ home, product }) => (
+      {({ home, company, product, faq }) => (
         <>
-          <section className="sl-hero" aria-labelledby="hero-title">
-            <Reveal className="sl-wrap">
-              <h1 id="hero-title">
-                {home.hero.title.map((t) => <span key={t}>{t}<br /></span>)}
-              </h1>
-              <p className="sl-hero-sub">{home.hero.subtitle}</p>
-              <div className="sl-actions">
-                <Link className="sl-btn sl-btn-secondary" href="/demo/a/product">제품 보기</Link>
-                <BuyPill url={product.purchaseUrl} />
+          {/* 1. 히어로 — 연한 파랑 면 */}
+          <section className="da-hero" aria-labelledby="hero-title">
+            <div className="da-wrap da-hero-in">
+              <div>
+                <Reveal as="h1" id="hero-title">
+                  {home.hero.title.map((t) => <span key={t}>{t}</span>)}
+                </Reveal>
+                <Reveal as="p" delay={80} className="da-lead">{home.hero.subtitle}</Reveal>
+                <Reveal delay={160} className="da-actions">
+                  <BuyLink url={product.purchaseUrl} />
+                  <a className="da-btn da-btn-secondary" href="#product" aria-label="제품 자세히 보기">제품 보기 <span aria-hidden="true">→</span></a>
+                </Reveal>
+                {!product.purchaseUrl && (
+                  <p className="da-hint">구매 링크는 준비 중입니다. 출시 소식은 <a href="#contact">문의</a>로 남겨 주세요.</p>
+                )}
               </div>
-              {!product.purchaseUrl && (
-                <p className="sl-hint">구매 링크는 아직 준비 중입니다. <Link href="/demo/a/inquiry">출시 소식 받기</Link></p>
-              )}
-            </Reveal>
-            <Reveal delay={150}>
-              <img className="sl-hero-img" src={home.hero.image} alt={home.hero.imageAlt} />
-            </Reveal>
+              <Reveal as="figure" delay={120} className="da-hero-fig">
+                <img className="da-hero-img" src={home.hero.image} alt={home.hero.imageAlt} />
+                <ul className="da-hero-card" aria-label="슬리비 한눈에 보기">
+                  {HERO_FACTS.map(([k, v]) => (
+                    <li key={k}><span className="da-dot" aria-hidden="true" /><strong>{k}</strong><span>{v}</span></li>
+                  ))}
+                </ul>
+                <figcaption>{home.hero.imageAlt}</figcaption>
+              </Reveal>
+            </div>
           </section>
 
-          <section className="sl-adv" aria-labelledby="adv-title">
-            <div className="sl-wrap">
-              <Reveal as="h2" id="adv-title">{home.advantagesTitle}</Reveal>
-              <ul className="sl-bento">
-                {home.advantages.map((a, i) => (
-                  <Reveal as="li" key={a.title} delay={i * 90} className={`sl-card${i === 0 ? " is-feature" : ""}`}>
-                    <span className="icon"><img src={a.icon} alt="" /></span>
-                    <h3>{a.title}</h3>
-                    <p>{a.desc}</p>
+          {/* 2. 브랜드·기업 소개 (3문장 이내) — 흰 면 */}
+          <section className="da-about" id="about" aria-labelledby="about-title">
+            <div className="da-wrap da-about-in">
+              <Reveal as="h2" id="about-title">슬리피는 어떤 회사일까요?</Reveal>
+              <Reveal className="da-statement">
+                {aboutSentences(company).map((t) => <p key={t}>{t}</p>)}
+              </Reveal>
+            </div>
+          </section>
+
+          {/* 3. 제품 상세와 주요 특징 3가지 — 연회색 면, 둥근 카드 */}
+          <section className="da-product" id="product" aria-labelledby="product-title">
+            <div className="da-wrap">
+              <Reveal as="h2" id="product-title">{product.name}</Reveal>
+              <Reveal as="p" className="da-lead">{product.summary}</Reveal>
+              <ul className="da-cards" tabIndex={0} aria-label="슬리비 주요 특징 3가지 (좌우로 넘겨 보기)">
+                {product.features.slice(0, 3).map((t, i) => (
+                  <Reveal as="li" key={t} delay={i * 80} className="da-card">
+                    <div className={`da-crop da-crop-${i + 1}`} role="img" aria-label={CROP_ALT[i]} />
+                    <div className="da-card-body">
+                      <h3><span className="da-tag">특징 {no(i)}</span></h3>
+                      <p>{t}</p>
+                    </div>
                   </Reveal>
                 ))}
               </ul>
             </div>
           </section>
 
-          <section className="sl-use" aria-labelledby="use-title">
-            <div className="sl-wrap">
-              <Reveal as="h2" id="use-title">{home.usecasesTitle}</Reveal>
-              <ul className="sl-cards3">
-                {home.usecases.map((u, i) => (
-                  <Reveal as="li" key={u.title} delay={i * 90} className="sl-use-card">
-                    <img className="dot" src="/images/home/usecase-dot.svg" alt="" />
-                    <h3>{u.title}</h3>
-                    <p>{u.desc}</p>
+          {/* 4. 사용 방법 3단계 + 기대 효과 — 연한 분홍 면 */}
+          <section className="da-usage" id="usage" aria-labelledby="usage-title">
+            <div className="da-wrap">
+              <Reveal as="h2" id="usage-title">어떻게 사용하나요?</Reveal>
+              <ol className="da-steps">
+                {product.usage.slice(0, 3).map((t, i) => (
+                  <Reveal as="li" key={t} delay={i * 80} className="da-step">
+                    <span className="da-step-no" aria-hidden="true">{no(i)}</span>
+                    <p>{t}</p>
                   </Reveal>
                 ))}
-              </ul>
+              </ol>
+              <Reveal className="da-effects">
+                <h3>기대 효과 <span className="da-tag">확정 전 문구</span></h3>
+                <ul>{product.effects.map((t) => <li key={t}>{t}</li>)}</ul>
+                <div className="da-evidence">
+                  <strong>EVIDENCE</strong>
+                  [허가·인증·임상 근거 정보: 확정 후 입력] <span className="da-tag">확정 전</span>
+                </div>
+              </Reveal>
             </div>
           </section>
 
-          <section className="sl-sum" aria-label="회사 소개 요약">
-            <Reveal className="sl-sum-box">
-              <p>{home.summary.text.map((t) => <span key={t}>{t}<br /></span>)}</p>
-              <Link className="sl-btn sl-btn-secondary" href="/demo/a/company">{home.summary.cta}</Link>
-            </Reveal>
+          {/* 5. FAQ 5개 — 흰 면 */}
+          <section className="da-faq" id="faq" aria-labelledby="faq-title">
+            <div className="da-wrap">
+              <Reveal as="h2" id="faq-title">궁금한 점이 있으신가요?</Reveal>
+              <div className="da-faq-list">
+                {faqFive(faq).map((f) => (
+                  <details key={f.id}>
+                    <summary><span>{f.q}{f.ph && <span className="da-tag">확정 전</span>}</span></summary>
+                    <p>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
           </section>
 
-          <section className="sl-inq" aria-labelledby="inq-title">
-            <div className="sl-wrap sl-inq-in">
-              <Reveal as="h2" id="inq-title">문의하기</Reveal>
-              <Reveal delay={90}><InquiryForm /></Reveal>
+          {/* 6. 문의 폼 — 연한 파랑 면 */}
+          <section className="da-contact" id="contact" aria-labelledby="contact-title">
+            <div className="da-wrap da-contact-in">
+              <div>
+                <Reveal as="h2" id="contact-title">더 궁금한 점이 있으신가요?</Reveal>
+                <Reveal as="p" className="da-body">궁금한 점을 남겨 주시면 확인 후 연락드리겠습니다.</Reveal>
+              </div>
+              <InquiryForm />
+            </div>
+          </section>
+
+          {/* 마무리 띠: 데스크톱에서도 구매로 이어지는 길 (모바일은 하단 바가 대신함) */}
+          <section className="da-closing" aria-labelledby="closing-title">
+            <div className="da-wrap">
+              <div className="da-closing-in">
+                <div>
+                  <Reveal as="h2" id="closing-title">오늘 밤은 편안하게 시작해 볼까요?</Reveal>
+                  <Reveal as="p" delay={80} className="da-lead">{product.summary}</Reveal>
+                </div>
+                <Reveal delay={160} className="da-actions"><BuyLink url={product.purchaseUrl} /></Reveal>
+              </div>
             </div>
           </section>
         </>
